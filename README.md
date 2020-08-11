@@ -44,9 +44,9 @@ https://leetcode.com/ 의 알고리즘 중 `Medium` 난이도에서 쉬운 순�
     creco$ git push origin creaticoding/main
     ```
 
-3. 저장소 메인 사이트로 접속 후 PR을 날린다. https://github.com/AlogorithmStudy/Leetcode
+3. 저장소 메인 사이트로 접속 후 PR을 날린다. https://github.com/byungyeon89/Leet-Code-Algorithm
 
-4. 미팅 때 코드리뷰를 진행한다.
+4. 시간날 때마다 개인적으로 코드리뷰를 진행한다.
 
 5. **코드리뷰가 완료된 PR만을 Merge한다.**
 
