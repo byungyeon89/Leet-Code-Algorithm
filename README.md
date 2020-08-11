@@ -50,8 +50,4 @@ https://leetcode.com/ 의 알고리즘 중 `Medium` 난이도에서 쉬운 순�
 
 5. **코드리뷰가 완료된 PR만을 Merge한다.**
 
-
-
-참여자: 정석호, 김지훈, 박연지
-
 문제리스트: https://leetcode.com/problemset/algorithms/?difficulty=Medium 에서 Acceptance 높은 순서대로
