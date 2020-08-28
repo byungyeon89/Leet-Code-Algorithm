@@ -47,12 +47,12 @@ class Solution(object):
         
         self.rst = 0
 
-        self.helper_up(rating, 3)
-        self.helper_down(rating, 3)
+        self.helper(rating, 3, 0)
+        self.helper(rating, 3, 1)
 
         return self.rst
 
-    def helper_up(self, rating, n):
+    def helper(self, rating, n, updown:0):
         """
         :type rating: List[int]
         :type n: int
@@ -63,30 +63,18 @@ class Solution(object):
             
         else:       
             for i in range(len(rating[:-(n-1)])):
-                newList = list(filter(lambda x: x > rating[i], rating[i+1:]))
+                if updown:
+                    newList = list(filter(lambda x: x > rating[i], rating[i+1:]))
+                else :
+                    newList = list(filter(lambda x: x < rating[i], rating[i+1:]))
                 if len(newList) >= (n-1) :
-                    self.helper_up(newList, (n-1))
-
-    def helper_down(self, rating, n):
-        """
-        :type rating: List[int]
-        :type n: int
-        """
-
-        if n == 1:
-            self.rst = self.rst + len(rating)
-            
-        else:       
-            for i in range(len(rating[:-(n-1)])):
-                newList = list(filter(lambda x: x < rating[i], rating[i+1:]))                
-                if len(newList) >= (n-1) :
-                    self.helper_down(newList, (n-1))
+                    self.helper(newList, (n-1), updown)
     
 def main():
 
     s = Solution()
-    #input = [2, 5, 3, 4, 1]
-    input = [1, 2, 3, 4]
+    input = [2, 5, 3, 4, 1]
+    #input = [1, 2, 3, 4]
     print(s.numTeams(input))
 
 
