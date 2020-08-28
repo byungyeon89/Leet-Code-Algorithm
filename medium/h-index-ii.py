@@ -29,6 +29,8 @@ Explanation: [0,1,3,5,6] means the researcher has 5 papers in total and each of 
 
 """
 
+import logging
+
 class Solution(object):
     def hIndex(self, citations):
         """
@@ -41,7 +43,7 @@ class Solution(object):
             moreThanPapers = len(set(list(filter(lambda x: x >= h, citations))))
             lessThanPapers = n - moreThanPapers
 
-            print('(1)h:', h, ',(2)n-h:', n-h, ',(3)countif([],>= (1)):', moreThanPapers, ',(4) n-(3):', lessThanPapers, ',(1)==(3):', h==moreThanPapers, ',(2)==(4):', (n-h)==lessThanPapers)
+            loggerTest.info("(1)h: %d, (2)n-h: %d, (3)countif([],>= (1)): %d, (4) n-(3): %d, (1)==(3): %r, (2)==(4): %r" % (h, n-h, moreThanPapers, lessThanPapers, h==moreThanPapers, (n-h)==lessThanPapers))
             if (n - h) == lessThanPapers and (h == moreThanPapers):
                 return h
 
@@ -65,5 +67,13 @@ def main():
         print('\n')
 
 if __name__ == "__main__":
+    loggerTest = logging.getLogger("test")
+    loggerTest.setLevel(logging.INFO) # DEBUG < INFO < WARNING < ERROR < CRITICAL  
+    #formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+    streamHander = logging.StreamHandler()
+    #streamHander.setFormatter(formatter)
+    loggerTest.addHandler(streamHander)
+
     main()    
   
