@@ -28,7 +28,7 @@ Explanation: [0,1,3,5,6] means the researcher has 5 papers in total and each of 
              two with no more than 3 citations each, her h-index is 3.
 
 """
-
+import sys
 import logging
 
 class Solution(object):
@@ -43,7 +43,9 @@ class Solution(object):
             moreThanPapers = len(set(list(filter(lambda x: x >= h, citations))))
             lessThanPapers = n - moreThanPapers
 
-            loggerTest.info("(1)h: %d, (2)n-h: %d, (3)countif([],>= (1)): %d, (4) n-(3): %d, (1)==(3): %r, (2)==(4): %r" % (h, n-h, moreThanPapers, lessThanPapers, h==moreThanPapers, (n-h)==lessThanPapers))
+            if 'logging' in sys.modules:
+                loggerTest.info("(1)h: %d, (2)n-h: %d, (3)countif([],>= (1)): %d, (4) n-(3): %d, (1)==(3): %r, (2)==(4): %r" \
+                   % (h, n-h, moreThanPapers, lessThanPapers, h==moreThanPapers, (n-h)==lessThanPapers))
             if (n - h) == lessThanPapers and (h == moreThanPapers):
                 return h
 
