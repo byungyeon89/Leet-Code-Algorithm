@@ -27,45 +27,56 @@ Explanation: [0,1,3,5,6] means the researcher has 5 papers in total and each of 
              Since the researcher has 3 papers with at least 3 citations each and the remaining 
              two with no more than 3 citations each, her h-index is 3.
 
+Input: citations = [1,1]
+Output: ?
+Explanation: [1,1] means the researcher has 2 papers in total and each of them had 
+             received 1, 1 citations respectively. 
+             Since the researcher has 2 papers with at least 1 citations each and the remaining 
+             none with no more than 1 citations each, her h-index is 1.
+
 """
 import sys
 import logging
 
 class Solution(object):
-    def hIndex(self, citations):
+    def hIndex(self, citations:"List[int]" = None):
         """
         :type citations: List[int]
         :rtype: int
         """
 
-        n = len(citations)
-        for h in range(1, n+1):
-            moreThanPapers = len(set(list(filter(lambda x: x >= h, citations))))
-            lessThanPapers = n - moreThanPapers
+        sz_input = len(citations)
 
-            if 'logging' in sys.modules:
+        for h in range(sz_input, -1, -1):
+            nums_more_papers = len(set(list(filter(lambda x: (x >= h), citations))))
+            nums_less_papers = sz_input - nums_more_papers
+
+            if "logging" in sys.modules:
                 loggerTest.info("(1)h: %d, (2)n-h: %d, (3)countif([],>= (1)): %d, (4) n-(3): %d, (1)==(3): %r, (2)==(4): %r" \
-                   % (h, n-h, moreThanPapers, lessThanPapers, h==moreThanPapers, (n-h)==lessThanPapers))
-            if (n - h) == lessThanPapers and (h == moreThanPapers):
+                                % (h, (sz_input - h), nums_more_papers, nums_less_papers, (h == nums_more_papers), ((sz_input - h) == nums_less_papers)))
+
+            if ((sz_input - h) == nums_less_papers):
                 return h
 
-        return 0
-
+            return 0
+        
 def main():
 
     s = Solution()
 
-    listInput = [[0, 1, 3, 5, 6],
-             [0],
-             [1],
-             [11, 15],
-             [1, 1],
-             [1, 2]]
+    test_cases = [
+        [0, 1, 3, 5, 6],
+        [0],
+        [1],
+        [11, 15],
+        [1, 1],
+        [1, 2],
+        ]
 
-    for i, input in enumerate(listInput):
-        print("[%d]"% (i+1))
-        print("Input:", input)
-        print("Output:", s.hIndex(input))
+    for i, test in enumerate(test_cases):
+        print("[%d]"% (i + 1))
+        print("Input:", test)
+        print("Output:", s.hIndex(test))
         print('\n')
 
 if __name__ == "__main__":
