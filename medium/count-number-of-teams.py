@@ -44,7 +44,7 @@ class Solution(object):
         :type rating: List[int]
         :rtype: int
         """
-        
+            
         self.rst = 0
 
         self.helper(rating, 3, 0)
