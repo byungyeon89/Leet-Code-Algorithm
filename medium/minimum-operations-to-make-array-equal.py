@@ -1,70 +1,70 @@
 
 
 """
-1551. Minimum Operations to Make Array Equal
+1551. Minimum Operations To Make Array Equal
 
-You have an array arr of length n where arr[i] = (2 * i) + 1 for all valid values of i (i.e. 0 <= i < n).
-In one operation, you can select two indices x and y where 0 <= x, y < n and subtract 1 from arr[x] and add 1 to arr[y] (i.e. perform arr[x] -=1 and arr[y] += 1). The goal is to make all the elements of the array equal. It is guaranteed that all the elements of the array can be made equal using some operations.
-Given an integer n, the length of the array. Return the minimum number of operations needed to make all the elements of arr equal.
+You Have An Array Arr Of Length N Where Arr[I] = (2 * I) + 1 For All Valid Values Of I (I.E. 0 <= I < N).
+In One Operation, You Can Select Two Indices X And Y Where 0 <= X, Y < N And Subtract 1 From Arr[X] And Add 1 To Arr[Y] (I.E. Perform Arr[X] -=1 And Arr[Y] += 1). The Goal Is To Make All The Elements Of The Array Equal. It Is Guaranteed That All The Elements Of The Array Can Be Made Equal Using Some Operations.
+Given An Integer N, The Length Of The Array. Return The Minimum Number Of Operations Needed To Make All The Elements Of Arr Equal.
 """
 
 """
 Constraints:
-1 <= n <= 10^4
+1 <= N <= 10^4
 """
 
 """
 Example 1:
-Input: n = 3
+Input: N = 3
 Output: 2
-Explanation: arr = [1, 3, 5]
-First operation choose x = 2 and y = 0, this leads arr to be [2, 3, 4]
-In the second operation choose x = 2 and y = 0 again, thus arr = [3, 3, 3].
+Explanation: Arr = [1, 3, 5]
+First Operation Choose X = 2 And Y = 0, This Leads Arr To Be [2, 3, 4]
+In The Second Operation Choose X = 2 And Y = 0 Again, Thus Arr = [3, 3, 3].
 Example 2:
-Input: n = 6
+Input: N = 6
 Output: 9
 
 """
-import sys
-import logging
+Import Sys
+Import Logging
 
-class Solution(object):
-    def minOperations(self, n):
+Class Solution(Object):
+    Def Minoperations(Self, N):
         """
-        :type n: int
-        :rtype: int
+        :Type N: Int
+        :Rtype: Int
         """              			
         	
-        arr =	[2*i+1 for i in range(n)]        
-        arr = list(map(lambda x: abs(x-n), arr))
+        Arr =	[2*I+1 For I In Range(N)]        
+        Arr = List(Map(Lambda X: Abs(X-N), Arr))
         	
-        return int(sum(arr)/2)
+        Return Int(Sum(Arr)/2)
         
         
-def main():
+Def Main():
 
-    s = Solution()
+    S = Solution()
 
-    test_cases = [
+    Test_Cases = [
         3,					# 1
         6,					# 2
         4,					# 3       
         ]	
 
-    for i, test in enumerate(test_cases):
-        print("[%d]"% (i + 1))
-        print("Input: ", test)
-        print("Output:", s.minOperations(test))
-        print('\n')
+    For I, Test In Enumerate(Test_Cases):
+        Print("[%D]"% (I + 1))
+        Print("Input: ", Test)
+        Print("Output:", S.Minoperations(Test))
+        Print('\N')
 
-if __name__ == "__main__":
-    loggerTest = logging.getLogger("test")
-    loggerTest.setLevel(logging.INFO) # DEBUG < INFO < WARNING < ERROR < CRITICAL  
-    #formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+If __Name__ == "__Main__":
+    Loggertest = Logging.Getlogger("Test")
+    Loggertest.Setlevel(Logging.Info) # Debug < Info < Warning < Error < Critical  
+    #Formatter = Logging.Formatter('%(Asctime)S - %(Name)S - %(Levelname)S - %(Message)S')
 
-    streamHander = logging.StreamHandler()
-    #streamHander.setFormatter(formatter)
-    loggerTest.addHandler(streamHander)
+    Streamhander = Logging.Streamhandler()
+    #Streamhander.Setformatter(Formatter)
+    Loggertest.Addhandler(Streamhander)
 
-    main()    
+    Main()    
   
