@@ -38,22 +38,18 @@ class Solution(object):
         :type S: str
         :rtype: int
         """
+        stack = []
         
-        cnt = 0
-        visited = [1 for i in range(len(S))]
-                
-        for i, c in enumerate(S):                	
-        	if c == "(":       		         		      		        	 		
-        		for j, lc in enumerate(S[i+1:]):        		
-        				if visited[i+j+1] and lc== ")":
-        					visited[i] = 0 
-	        				visited[i+j+1] = 0
-	        				break	        				
-        		
-        cnt += sum(visited)
+        for c in S:
+        	if c == "(":
+        		stack.append(c)
+        	else:
+        		if stack and stack[-1] == "(":
+        			stack.pop()        		
+        		else:
+        			stack.append(c)
         
-        return cnt
-        	
+        return len(stack)
                     
 def main():
 
